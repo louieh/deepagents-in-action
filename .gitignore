@@ -1,0 +1,12 @@
+# generated content
+src/content/chapters/
+
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+node_modules/

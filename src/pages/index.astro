@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ChapterCard from '../components/ChapterCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import '../styles/global.css';
+
+const allChapters = await getCollection('chapters');
+const sorted = allChapters.sort((a, b) => a.data.order - b.data.order);
+
+const sections = ['认知篇', '核心篇', '进阶篇', '实战篇'] as const;
+const grouped = sections.map(section => ({
+  section,
+  chapters: sorted.filter(ch => ch.data.section === section),
+}));
+
+const publishedCount = sorted.filter(ch => ch.data.published).length;
+---
+
+<BaseLayout title="Deep Agents 实战 — 从零构建生产级 AI Agent 的完整指南">
+  <Header />
+  <main class="max-w-5xl mx-auto px-6">
+    <!-- Hero -->
+    <section class="py-24 md:py-32 text-center relative">
+      <div class="absolute inset-0 bg-dot-grid opacity-[0.03] pointer-events-none"></div>
+      <div class="relative">
+        <p class="text-xs font-mono tracking-[0.3em] text-gold mb-6 uppercase">LangChain Deep Agents SDK</p>
+        <h1 class="text-5xl md:text-6xl font-black font-sans tracking-tight text-ink mb-6 leading-[1.1]">
+          Deep Agents 实战
+        </h1>
+        <p class="text-lg text-ink-muted max-w-xl mx-auto leading-relaxed">
+          从零构建生产级 AI Agent 的完整指南<br />
+          <span class="text-ink-muted/60">已发布 {publishedCount} 章</span>
+        </p>
+        <div class="mt-8 w-12 h-1 bg-gold rounded-full mx-auto mb-8"></div>
+        <a href={`${import.meta.env.BASE_URL}/chapters/ch01-agent-harness/`} class="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white rounded-lg font-medium hover:bg-ink-light transition-colors">
+          开始阅读
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Chapter list by section -->
+    {grouped.map(({ section, chapters }) => (
+      <section class="mb-20">
+        <SectionHeading title={section} />
+        <div class="grid md:grid-cols-2 gap-5">
+          {chapters.map(ch => (
+            <ChapterCard
+              id={ch.id}
+              title={ch.data.title}
+              chapter={ch.data.chapter}
+              section={ch.data.section}
+              description={ch.data.description}
+              published={ch.data.published}
+              slides={ch.data.slides}
+              bilibili={ch.data.bilibili}
+              xhs={ch.data.xhs}
+            />
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+  <Footer />
+</BaseLayout>

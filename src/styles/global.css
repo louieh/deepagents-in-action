@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "LXGW WenKai", "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Menlo", "Consolas", monospace;
+
+  --color-ink: #1a1a2e;
+  --color-ink-light: #2d2d44;
+  --color-ink-muted: #4a4a5a;
+  --color-paper: #faf8f5;
+  --color-paper-warm: #f5f0e8;
+  --color-gold: #b8860b;
+  --color-gold-light: #d4a853;
+  --color-gold-pale: #f5ead6;
+  --color-accent: #2b6cb0;
+  --color-accent-light: #ebf2fa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+::selection {
+  background-color: var(--color-gold-pale);
+  color: var(--color-ink);
+}
+
+/* Dot grid background pattern */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, #d4d0c8 0.8px, transparent 0.8px);
+  background-size: 24px 24px;
+}
+
+/* Chapter number decoration */
+.chapter-num {
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-gold-light);
+  opacity: 0.3;
+  position: absolute;
+  top: -1.5rem;
+  right: -0.5rem;
+  pointer-events: none;
+  font-family: var(--font-sans);
+}
