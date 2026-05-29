@@ -17,25 +17,6 @@ const grouped = sections.map(section => ({
 }));
 
 const publishedCount = sorted.filter(ch => ch.data.published).length;
-
-// Fetch GitHub star count at build time. Resilient to API failures
-// (network down, rate-limited, slow) — falls back to null so the button still renders.
-let stars: number | null = null;
-try {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 2500);
-  const res = await fetch('https://api.github.com/repos/webup/deepagents-course', {
-    headers: { Accept: 'application/vnd.github+json' },
-    signal: ctrl.signal,
-  });
-  clearTimeout(timer);
-  if (res.ok) {
-    const data = await res.json();
-    if (typeof data.stargazers_count === 'number') stars = data.stargazers_count;
-  }
-} catch {
-  // Swallow — render fallback below
-}
 ---
 
 <BaseLayout title="Deep Agents 实战 — 从零构建生产级 AI Agent 的完整指南">
@@ -87,12 +68,8 @@ try {
             GitHub Star
             <span
               id="gh-star-count"
-              data-fallback={stars ?? ''}
-              class:list={[
-                'ml-1 px-1.5 py-0.5 rounded text-xs font-mono bg-gold-pale/60 text-gold border border-gold/20',
-                stars === null && 'hidden',
-              ]}
-            >{stars ?? ''}</span>
+              class="ml-1 px-1.5 py-0.5 rounded text-xs font-mono bg-gold-pale/60 text-gold border border-gold/20 hidden"
+            ></span>
           </a>
         </div>
 
