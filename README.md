@@ -30,24 +30,24 @@
 
 基于 [AgentSeek](https://github.com/ob-labs/agentseek) 工程化套件，帮助学员快速搭建开发环境：
 
-- [`agentseek create` 搭建模板应用](content/ch07-agentseek-create.md)：拉取预制模板并前后端联调运行
-- [`agentseek skills` 安装开发技能](content/ch08-agentseek-skills.md)：为 AI 编码助手加载 LangChain 工程经验
+- [`agentseek create` 搭建模板应用](https://webup.github.io/deepagents-course/chapters/ch07-agentseek-create/)：拉取预制模板并前后端联调运行
+- [`agentseek skills` 安装开发技能](https://webup.github.io/deepagents-course/chapters/ch08-agentseek-skills/)：为 AI 编码助手加载 LangChain 工程经验
 
 ### 认知篇
 
 | 章节 | 标题 |
 |------|------|
-| 第 1 章 | 从 Agent Framework 到 Agent Harness — Deep Agents 的诞生逻辑 |
-| 第 2 章 | 快速上手 — 5 分钟构建你的第一个 Deep Agent |
+| 第 1 章 | [从 Agent Framework 到 Agent Harness — Deep Agents 的诞生逻辑](https://webup.github.io/deepagents-course/chapters/ch01-agent-harness/) |
+| 第 2 章 | [快速上手 — 5 分钟构建你的第一个 Deep Agent](https://webup.github.io/deepagents-course/chapters/ch02-quickstart/) |
 
 ### 核心篇
 
 | 章节 | 标题 |
 |------|------|
-| 第 3 章 | 虚拟文件系统 — Deep Agents 的 Context Engineering 核心 |
-| 第 4 章 | 任务规划与分解 — 让 Agent 学会拆解复杂任务 |
-| 第 5 章 | 子 Agent 与上下文隔离 — 让 Agent 学会委派 |
-| 第 6 章 | 异步子 Agent — 让主 Agent 同时驱动多个子任务 |
+| 第 3 章 | [虚拟文件系统 — Deep Agents 的 Context Engineering 核心](https://webup.github.io/deepagents-course/chapters/ch03-virtual-filesystem/) |
+| 第 4 章 | [任务规划与分解 — 让 Agent 学会拆解复杂任务](https://webup.github.io/deepagents-course/chapters/ch04-task-planning/) |
+| 第 5 章 | [子 Agent 与上下文隔离 — 让 Agent 学会委派](https://webup.github.io/deepagents-course/chapters/ch05-subagents/) |
+| 第 6 章 | [异步子 Agent — 让主 Agent 同时驱动多个子任务](https://webup.github.io/deepagents-course/chapters/ch06-async-subagents/) |
 
 后续还有进阶篇（长期记忆、Human-in-the-Loop、Skills、沙箱执行）和实战篇（流式前端、数据分析 Agent、生产部署）正在规划中，持续更新。
 
