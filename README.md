@@ -166,6 +166,13 @@ deepagents-in-action/
   <sub>43 commits</sub>
 </td>
 <td align="center" valign="top" width="120">
+  <a href="https://github.com/knqiufan">
+    <img src="https://avatars.githubusercontent.com/u/34114995?v=4&s=144" width="72" height="72" alt="knqiufan" style="border-radius:50%;" /><br />
+    <sub><strong>knqiufan</strong></sub>
+  </a><br />
+  <sub>3 commits</sub>
+</td>
+<td align="center" valign="top" width="120">
   <a href="https://github.com/codeMonkeyWang">
     <img src="https://avatars.githubusercontent.com/u/3906539?v=4&s=144" width="72" height="72" alt="codeMonkeyWang" style="border-radius:50%;" /><br />
     <sub><strong>codeMonkeyWang</strong></sub>
@@ -179,6 +186,8 @@ deepagents-in-action/
   </a><br />
   <sub>1 commit</sub>
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="120">
   <a href="https://github.com/Walt-like">
     <img src="https://avatars.githubusercontent.com/u/56186222?v=4&s=144" width="72" height="72" alt="Walt-like" style="border-radius:50%;" /><br />
