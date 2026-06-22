@@ -12,6 +12,23 @@ if (!existsSync(OUT_DIR)) {
   mkdirSync(OUT_DIR, { recursive: true });
 }
 
+function convertQuotes(text) {
+  // Split by fenced code blocks, inline code, and code lines in tables
+  const parts = text.split(/(```[\s\S]*?```|`[^`\n]+`)/);
+  return parts.map((part, i) => {
+    // Odd indices are code — leave untouched
+    if (i % 2 === 1) return part;
+    // Even indices are text — replace English quotes containing Chinese
+    return part.split('\n').map(line => {
+      const quote = /^\s*>/.test(line) ? '‘’' : '“”';
+      return line.replace(
+        /"([^"\n]*[\u{4e00}-\u{9fff}\u{3000}-\u{303f}\u{ff00}-\u{ffef}][^"\n]*)"/gu,
+        (_, content) => `${quote[0]}${content}${quote[1]}`
+      );
+    }).join('\n');
+  }).join('');
+}
+
 for (const [id, meta] of Object.entries(manifest)) {
   const sourceFile = resolve(ROOT, `content/${id}.md`);
 
@@ -28,6 +45,9 @@ for (const [id, meta] of Object.entries(manifest)) {
   // Rewrite relative image paths to include base path
   const BASE = '/deepagents-in-action';
   body = body.replace(/!\[([\s\S]*?)\]\(\.\.\/public\/imgs\//g, `![$1](${BASE}/imgs/`);
+
+  // Convert English quotes to Chinese quotes in non-code text
+  body = convertQuotes(body);
 
   const frontmatter = [
     '---',
